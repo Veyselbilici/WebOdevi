@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Müşteri Sayfası</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+</body>
+
+    <!-- Sayfa içeriği -->
+    <h1>Müşteri Sayfası</h1>
+
+    <!-- Kutucuklar -->
+    <div class="container">
+        <div class="link-box" onclick="goToPage('önceki-sikayetlerliste.html')">
+            <h2>ÖNCEKİ Şikayetleri Listele</h2>
+        </div>
+        <div class="link-box" onclick="goToPage('yeni-sikayet-ekle-sil.html')">
+            <h2>Yeni Şikayet Ekle/Sil/Değiştir</h2>
+        </div>
+    </div>
+
+    <!-- Sayfa içeriği buraya gelecek -->
+
+    <!-- Bootstrap JS ve jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        // Sayfaya yönlendirme fonksiyonu
+        function goToPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>
