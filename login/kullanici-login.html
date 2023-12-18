@@ -1,0 +1,40 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Giriş Yap</h1>
+        <h1>Kullanıcı Girişi</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Kullanıcı Adı:</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Şifre:</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Giriş Yap</button>
+        </form>
+        <!-- Giriş başarısızsa gösterilecek bildirim -->
+        <div class="alert alert-danger mt-3" id="loginError" style="display: none;">
+            Giriş başarısız. Lütfen kullanıcı adı ve şifrenizi kontrol edin.
+        </div>
+    </div>
+
+    <!-- Bootstrap JS ve jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Özel JavaScript kodu -->
+    <script src="kullanici-login.js"></script>
+</body>
+</html>
