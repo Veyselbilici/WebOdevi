@@ -1,0 +1,41 @@
+<!-- manage-complaints.html -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şikayetleri Yönet</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Şikayetleri Yönet</h1>
+        <!-- Yeni şikayet ekleme formu -->
+        <form id="addComplaintForm">
+            <div class="form-group">
+                <label for="complaintDescription">Şikayet Açıklaması:</label>
+                <textarea class="form-control" id="complaintDescription" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Yeni Şikayet Ekle</button>
+        </form>
+
+        <hr>
+
+        <!-- Şikayetleri listeleme alanı -->
+        <h2>Şikayetleri Listele</h2>
+        <ul id="complaintList">
+            <!-- Şikayetlerin dinamik olarak eklenmesi için bir döngü kullanabilirsin -->
+            <li>Şikayet 1 <button class="btn btn-danger btn-sm" onclick="deleteComplaint(1)">Sil</button></li>
+            <li>Şikayet 2 <button class="btn btn-danger btn-sm" onclick="deleteComplaint(2)">Sil</button></li>
+            <!-- ... -->
+        </ul>
+    </div>
+
+    <!-- JavaScript veya jQuery dosyasını ekleyebilirsin -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="yeniekle-silscript.js"></script>
+</body>
+</html>

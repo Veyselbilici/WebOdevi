@@ -1,0 +1,44 @@
+<!-- complaint-list.html -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şikayet Listesi</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Şikayet Listesi</h1>
+        <!-- Şikayet listesi ve arama formunu buraya ekleyebilirsin -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Şikayet Tarihi</th>
+                    <th>Şikayet Sahibi</th>
+                    <th>Şikayet Açıklaması</th>
+                    <th>Şikayet Durumu</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Şikayetlerin dinamik olarak eklenmesi için bir döngü kullanabilirsin -->
+                <tr>
+                    <td>01.01.2023</td>
+                    <td>Şikayet Sahibi</td>
+                    <td>Şikayet Açıklaması</td>
+                    <td>Aktif</td>
+                    <td>
+                        <button class="btn btn-info">Detay</button>
+                        <button class="btn btn-success">Cevap Ver</button>
+                        <button class="btn btn-danger">Kapat</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
