@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "kullaniciAdi": "Halil",
+        "sifre": "1234"
+    },
+    {
+        "id": 2,
+        "kullaniciAdi": "Veysel",
+        "sifre": "12345"
+    }
+]

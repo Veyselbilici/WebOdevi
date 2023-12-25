@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    // Get current path
     let currentPath = window.location.pathname;
     let navLinks = $('.navbar-nav a');
 

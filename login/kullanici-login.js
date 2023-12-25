@@ -1,21 +1,30 @@
 $(document).ready(function () {
-    // Giriş formunu dinle
-    $("#loginForm").submit(function (e) {
-        e.preventDefault(); // Formun otomatik gönderilmesini engelle
+  $("#loginForm").submit(function (e) {
+    e.preventDefault();
 
-        // Kullanıcı adı ve şifre kontrolü (örnek kontrol, gerçek bir oturum kontrolü eklenmeli)
-        /* TODO kullanici adi  ve sifre kontrolu icin ilkel auth sistemi yapilacak */
-        var username = $("#username").val();
-        var password = $("#password").val();
+    var username = $("#username").val();
+    var password = $("#password").val();
 
-        if (username === "veysel" && password === "1234") {
-            // Başarılı giriş, ana sayfaya yönlendir
-            window.location.href = "/sayfalar/kullanici/sikayetler.html";
-            localStorage.setItem('username', username);
+    $.ajax({
+      url: "http://localhost:3000/kullanici",
+      type: "GET",
+      success: function (data) {
+        var users = data;
+        console.log(data);
+        var user = users.find(function (user) {
+          return user.kullaniciAdi === username && user.sifre === password;
+        });
 
+        if (user) {
+          window.location.href = "/sayfalar/kullanici/sikayetler.html";
+          localStorage.setItem("kullaniciId", user.id);
         } else {
-            // Başarısız giriş, hata bildirimi göster
-            $("#loginError").show();
+          $("#loginError").show();
         }
+      },
+      error: function (error) {
+        console.log("Error: ", error);
+      },
     });
+  });
 });
