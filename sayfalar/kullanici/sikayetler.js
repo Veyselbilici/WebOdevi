@@ -1,44 +1,100 @@
+function getCevap(sikayetId) {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: "http://localhost:3000/cevap/" + sikayetId,
+      type: "GET",
+      success: function (data) {
+        resolve(data);
+      },
+      error: function (error) {
+        console.log("Error: ", error);
+        reject(error);
+      },
+    });
+  });
+}
+
 $(document).ready(function () {
   var sikayetId;
   $.getJSON("/sikayetler.json", function (data) {
     var row = $('<div class="row"></div>');
     $.each(data, function (key, complaint) {
-      var complaintCard = `
-        <div class="col-md-6">
-          <div class="card bg-secondary text-light mb-3 shadow-lg">
-            <div class="row g-0">
-              <div class="col-md-4 d-flex justify-content-center align-items-center" style="height: 200px;">
-                <img src="${complaint.fotoUrl}" style="max-width: 80%; max-height: 80%;" class="card-img" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body" style="position: relative; padding-bottom: 40px;">
-                  <h5 class="card-title">${complaint.sirket}</h5>
-                  <h6 class="card-subtitle mb-2 text-light">${complaint.baslik}</h6>
-                  <p class="card-text">${complaint.sikayet}</p>
-                  <button type="button" class="btn btn-info btn-sm delete-complaint" data-id="${complaint.id}" style="position: absolute; top: 10px; right: 10px;">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                  <button type="button" class="btn btn-warning btn-sm edit-complaint" data-id="${complaint.id}" style="position: absolute; top: 10px; right: 50px;">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
+      getCevap(complaint.id).then((data) => {
+        cevap = data;
+        var complaintCard = `
+      <div class="container">
+      <article class="postcard dark green">
+        <a class="postcard__img_link" href="#">
+          <img
+            class="postcard__img"
+            src=${complaint.fotoUrl}
+            alt="Image Title"
+          />
+        </a>
+        <div class="postcard__text" >
+          <h1 class="postcard__title green">
+            <a href="#">${complaint.baslik}</a>
+          </h1>
+          <div class="postcard__subtitle small">
+            <time datetime="2020-05-25 12:00:00">
+              <i class="fas fa-calendar-alt mr-2 ml-2"></i>Mon, May 25th 2020
+            </time>
           </div>
+          <div class="postcard__subtitle small">
+          <i class="bi bi-building mr-2 ml-2"></i>${complaint.sirket}
         </div>
+       
+          <div class="postcard__bar"></div>
+          <div class="postcard__preview-txt">
+           ${complaint.sikayet}
+          </div>
+          <div class="postcard__preview-txt">
+          ${
+            !complaint.cozuldu
+              ? '<button type="button" class="btn btn-outline-danger" style="border:none;"><i class="bi bi-hourglass-split"></i><i style="margin:5px;">Cevap Bekleniyor</i></button>'
+              : '<span class="m-r-15 text-success"><i class="bi bi-check-circle-fill"><i style="margin:5px;">Cevaplandı</i></i></span>'
+          } 
+          ${
+            cevap &&
+            `          <div class="postcard__bar" style="height:2px"></div>
+            <div class="postcard__preview-txt">
+          ${cevap.cevap} </div>`
+          }
+         </div>
+          <ul class="postcard__tagbox">
+            <li class="tag__item play green">
+            <button type="button" class="btn sikayet-sil" data-id="${
+              complaint.id
+            }">
+              <i class="bi bi-trash m-1 danger"></i><span class="text-danger">Sil</span>
+              </button>
+            </li>
+            <li class="tag__item play green">
+            <button type="button" class="btn sikayet-duzenle-btn" data-id="${
+              complaint.id
+            }">
+              <i class="icon-pencil font-large p-1 primary"></i><span class="text-primary">Düzenle</span>              </button>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
       `;
-      row.append(complaintCard);
-      if ((key + 1) % 2 === 0) {
-        $("#complaintsContainer").append(row);
-        row = $('<div class="row"></div>');
-      }
+
+        row.append(complaintCard);
+        if ((key + 1) % 2 === 0) {
+          $("#complaintsContainer").append(row);
+          row = $('<div class="row"></div>');
+        }
+
+        if (row.children().length > 0) {
+          $("#complaintsContainer").append(row);
+        }
+      });
     });
-    if (row.children().length > 0) {
-      $("#complaintsContainer").append(row);
-    }
   });
 
-  $(document).on("click", ".delete-complaint", function (e) {
+  $(document).on("click", ".sikayet-sil", function (e) {
     e.preventDefault();
 
     var sikayetId = $(this).data("id");
@@ -54,7 +110,7 @@ $(document).ready(function () {
     });
   });
 
-  $(document).on("click", ".edit-complaint", function (e) {
+  $(document).on("click", ".sikayet-duzenle-btn", function (e) {
     e.preventDefault();
 
     sikayetId = $(this).data("id");
@@ -105,39 +161,41 @@ $(document).ready(function () {
   });
 
   $("#create-sikayet-btn").on("click", function () {
-      var options = {
-        keyboard: false,
-        focus: true,
-      };
-      
-      var myModal = new bootstrap.Modal(
-        document.getElementById("sikayetModal"),
-        options
-      );
-      myModal.show();
+    var options = {
+      keyboard: false,
+      focus: true,
+    };
+
+    var myModal = new bootstrap.Modal(
+      document.getElementById("sikayetModal"),
+      options
+    );
+    myModal.show();
   });
 
   $("#sikayetForm").on("submit", function (e) {
-      e.preventDefault();
+    e.preventDefault();
 
-      var sikayet = {
-        sirket: $("#sirketYeni").val(),
-        baslik: $("#baslikYeni").val(),
-        sikayet: $("#sikayetYeni").val(),
-        fotoUrl: $("#imageUrl").val(),
-      };
-      console.log(sikayet)
-      
-      $.ajax({
-        type: "POST",
-        url: "http://localhost:3000/sikayet",
-        data: JSON.stringify(sikayet),
-        dataType: "json",
-        contentType: "application/json",
-        encode: true,
-      }).done(function (data) {
-        console.log(data);
-        $("#sikayetModal").modal("hide");
-      });
+    var sikayet = {
+      sirket: $("#sirketYeni").val(),
+      baslik: $("#baslikYeni").val(),
+      sikayet: $("#sikayetYeni").val(),
+      fotoUrl: $("#imageUrl").val(),
+      sikayetSahibiID: localStorage.getItem("kullaniciId"),
+      cozuldu: false,
+    };
+    console.log(sikayet);
+
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3000/sikayet",
+      data: JSON.stringify(sikayet),
+      dataType: "json",
+      contentType: "application/json",
+      encode: true,
+    }).done(function (data) {
+      console.log(data);
+      $("#sikayetModal").modal("hide");
+    });
   });
 });
