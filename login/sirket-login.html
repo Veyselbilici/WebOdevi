@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: linear-gradient(179.4deg, rgb(12, 20, 69) -16.9%, rgb(71, 30, 84) 119.9%);
+            height: 100vh;
+            color: wheat;
+        }
+
+        .card {
+            background: linear-gradient(179.4deg, rgb(19, 31, 111) -16.9%, rgb(71, 30, 84) 119.9%);
+            color: wheat;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+
+        .form-control {
+            background-color: #e9ecef;
+            color: #495057;
+        }
+
+        .btn-primary {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center align-items-center vh-100">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <img class="mb-4" src="../images/logo.svg" alt="" width="82" height="82"
+                                    style="border: solid 1px rgb(64, 64, 64); border-radius:50%; padding: 10px;">
+                                <h1 class="h3 mb-3 font-weight-normal">Giriş Yap</h1>
+                            </div>
+                            <form id="loginForm">
+                                <div class="form-group">
+                                    <label for="username">Sirket Adı:</label>
+                                    <input type="text" class="form-control" id="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Şifre:</label>
+                                    <input type="password" class="form-control" id="password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block mt-3">Giriş Yap</button>
+                            </form>
+                            <!-- Giriş başarısızsa gösterilecek bildirim -->
+                            <div class="alert alert-danger mt-3" id="loginError" style="display: none;">
+                                Giriş başarısız. Lütfen kullanıcı adı ve şifrenizi kontrol edin.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap JS ve jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Özel JavaScript kodu -->
+        <script src="sirket-login.js"></script>
+    </body>
+
+</html>

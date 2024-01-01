@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "kullaniciAdi": "Halil",
+        "avatar":"https://avatars.githubusercontent.com/u/49736917?v=4",
+        "sifre": "1234"
+    },
+    {
+        "id": 2,
+        "kullaniciAdi": "Veysel",
+        "sifre": "12345"
+    }
+]

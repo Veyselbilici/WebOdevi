@@ -1,52 +1,264 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Şikayet Uygulaması</title>
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(179.4deg, rgb(12, 20, 69) -16.9%, rgb(71, 30, 84) 119.9%);
+            height: 200vh;
+            color: wheat;
+        }
+
+        .navbar {
+            background-color: #f8f9fa !important;
+            color: #000000;
+        }
+
+        .card {
+            background-color: #f8f9fa !important;
+            color: #000000;
+        }
+
+        .navbar a,
+        .card-title,
+        .card-text {
+            color: #000000 !important;
+        }
+
+        .dark-theme {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .dark-theme .navbar,
+        .dark-theme .card {
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        .dark-theme .navbar a,
+        .dark-theme .card-title,
+        .dark-theme .card-text {
+            color: #ffffff !important;
+        }
+
+        .nav-link {
+            border: 1px solid #1abc9c;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            border-color: #16a085;
+        }
+    </style>
 </head>
+
+<!-- Rest of your HTML code -->
+
+
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 100%;">
+        <a class="navbar-brand" href="#"> <img src="./images/logo.svg" width="90" height="40"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mr-2">
+                    <a class="nav-link" id="sirket-girisi" href="#">Şirket Girişi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="kullanici-girisi" href="#">Kullanıcı Girişi</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-<!-- Navbar -->
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">Şikayet Uygulaması</a>
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link" href="index.html">Ana Sayfa</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="login.html">Giriş</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="profile.html">Profil</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="sikayet-listesi.html">Şikayet Listesi</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="sikayetcevap-kapatma.html">Şikayete Cevap Verme-Kapatma</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="önceki-sikayetlerliste.html">ÖNCEKİ Şikayetleri Listele</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="yeni-sikayet-ekle-sil.html">Yeni Şikayet Ekle/sil/Degiştir</a>
-        </li>
-    </ul>
-</nav>
+    <!-- Sayfa içeriği -->
 
-<!-- Sayfa içeriği -->
-<div class="container mt-4">
-    <h1>Hoş Geldiniz!</h1>
-    <p>Şikayetlerinizi paylaşın...</p>
-    <!-- Ana sayfa içeriği buraya gelecek -->
-</div>
+    <body style="width: 100%;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div class="text-center" style="margin-left: 10rem; margin-bottom:20rem">
+                <p class="display-4 text-gray">Çözüm İçin</p>
+                <p class="display-3 text-gray">Şikayet Var</p>
+            </div>
+            <img src="https://cdn.sikayetvar.com/public/images/new-year/sv-banner.png" style="align-self: flex-end;">
+        </div>
+        <div class="text-left" style="margin-top:2rem; margin-bottom:2rem;">
+            <p class="display-4 text-dark">Gündemdeki Şikayetler</p>
+        </div>
 
-<!-- Bootstrap JS ve jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <div class="content">
+            <div class="card custom-card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="https://images.samsung.com/is/image/samsung/p6pim/tr/sm-a546elgdtur/gallery/tr-galaxy-a-sm-a546elgdtur-front-green-537265915?$650_519_PNG$"
+                            class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="dropdown float-right">
+                                <button class="btn btn-transparent" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Düzenle</a>
+                                    <a class="dropdown-item" href="#">Sil</a>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Card Title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card Subtitle</h6>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card custom-card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="https://images.samsung.com/is/image/samsung/p6pim/tr/sm-a546elgdtur/gallery/tr-galaxy-a-sm-a546elgdtur-front-green-537265915?$650_519_PNG$"
+                            class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="dropdown float-right">
+                                <button class="btn btn-transparent" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Düzenle</a>
+                                    <a class="dropdown-item" href="#">Sil</a>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Card Title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card Subtitle</h6>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card custom-card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="https://images.samsung.com/is/image/samsung/p6pim/tr/sm-a546elgdtur/gallery/tr-galaxy-a-sm-a546elgdtur-front-green-537265915?$650_519_PNG$"
+                            class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="dropdown float-right">
+                                <button class="btn btn-transparent" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Düzenle</a>
+                                    <a class="dropdown-item" href="#">Sil</a>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Card Title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card Subtitle</h6>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card custom-card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="https://images.samsung.com/is/image/samsung/p6pim/tr/sm-a546elgdtur/gallery/tr-galaxy-a-sm-a546elgdtur-front-green-537265915?$650_519_PNG$"
+                            class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="dropdown float-right">
+                                <button class="btn btn-transparent" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Düzenle</a>
+                                    <a class="dropdown-item" href="#">Sil</a>
+                                </div>
+                            </div>
+                            <h5 class="card-title">Card Title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card Subtitle</h6>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 
+    <style>
+        @keyframes slideInFromRight {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .content {
+            display: flex;
+            width: 100%;
+            overflow-x: hidden;
+            padding: 2;
+            animation: slideInFromRight 10s ease-in-out infinite;
+        }
+
+        .custom-card {
+            flex: 0 0 auto;
+        }
+
+        .custom-card {
+            border-radius: 15px;
+            /* Yuvarlak köşeler */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            /* Gölge efekti */
+            transition: 0.3s;
+            /* Geçiş süresi */
+            margin-right: 0;
+            /* Sağ kenar boşluğunu kaldır */
+
+        }
+
+        .custom-card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            /* Hover durumunda daha büyük bir gölge */
+            transform: scale(1.05);
+            /* Kartın boyutunu %5 büyüt */
+        }
+    </style>
+
+
+    <!-- Bootstrap JS ve jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
 </body>
+
 </html>
