@@ -107,12 +107,13 @@ $(document).ready(function () {
  </div>`;
 
           $("#sikayetler").append(sikayetHTML);
+         
           $(document).ready(function () {
             $(document).on('click', '#btn-cevap', function (e) {
               console.log("tıklandı");
               e.preventDefault();
               $.ajax({
-                type: "POST",
+                type: "PUT",
                 url: "http://localhost:3000/cevap",
                 data: JSON.stringify({
                   sikayetId: sikayet.id,

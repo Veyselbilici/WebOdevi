@@ -58,7 +58,7 @@ $(document).ready(function () {
             cevap &&
             `          <div class="postcard__bar" style="height:2px"></div>
             <div class="postcard__preview-txt">
-          ${cevap.cevap} </div>`
+          ${cevap?.cevap} </div>`
           }
          </div>
           <ul class="postcard__tagbox">
@@ -190,6 +190,17 @@ $(document).ready(function () {
       type: "POST",
       url: "http://localhost:3000/sikayet",
       data: JSON.stringify(sikayet),
+      dataType: "json",
+      contentType: "application/json",
+      encode: true,
+    }).done(function (data) {
+      console.log(data);
+      $("#sikayetModal").modal("hide");
+    });
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3000/cevap",
+      data: JSON.stringify(""),
       dataType: "json",
       contentType: "application/json",
       encode: true,
