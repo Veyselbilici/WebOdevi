@@ -9,7 +9,6 @@ $(document).ready(function () {
 
       <div class="content">
           <div class="profileCard">
-              <div class="firstinfo"><img src="${data.logo}" />
                   <div class="profileinfo">
                       <h1>${data.kullaniciAdi}</h1>
                       <h3>Kullanıcı</h3>
